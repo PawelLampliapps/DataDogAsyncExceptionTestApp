@@ -8,6 +8,7 @@
  * @format
  */
 
+import {DdLogs} from '@datadog/mobile-react-native';
 import React from 'react';
 import {
   SafeAreaView,
@@ -33,6 +34,10 @@ const App = () => {
     throw 'Internal Async Exception';
   };
 
+  const DDconnectionTestOnPress = () => {
+    DdLogs.warn('DD connection test warning');
+  };
+
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
@@ -40,6 +45,12 @@ const App = () => {
         onPress={onPress}
         style={{margin: 10, padding: 10, top: 10}}>
         <Text style={{fontSize: 20}}>Async Exception</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        onPress={DDconnectionTestOnPress}
+        style={{margin: 10, padding: 10, top: 10}}>
+        <Text style={{fontSize: 20}}>DD connection log test</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
