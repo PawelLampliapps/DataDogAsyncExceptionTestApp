@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {initializeDatadog} from './src/datadog';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -25,6 +26,8 @@ const App = () => {
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
+
+  initializeDatadog();
 
   const onPress = async () => {
     throw 'Internal Async Exception';
